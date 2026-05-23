@@ -1,8 +1,0 @@
-/cache/
-/node_modules/
-/settings.json
-/package-lock.json
-/.idea/
-/src/backup/
-/log.txt
-**/.DS_Store
