@@ -1,55 +1,56 @@
 # Spotify Live Status
 
-Show your Spotify status on Discord with **live lyrics support**.
+Automatically show what you're listening to on Spotify directly in your Discord status — including the **live lyric line** as it plays.
 
 ![Discord RPC showing current Spotify track with lyrics](assets/spotify_live_status_example.png)
 
-> **Note:** This app may not work reliably with fast songs or tracks without lyrics, as it depends on Spotify's web player DOM and lyrics panel being visible.
+> **Heads up:** Live lyrics depend on the Spotify web player's lyrics panel being open. Fast or instrumental tracks may not display a lyric line.
 
-## How it works
+## What it does
 
-- A Tampermonkey userscript runs on `open.spotify.com` and reads the current track, album art, and lyrics from the page
-- The desktop app receives that data over a local WebSocket and pushes it to Discord via Rich Presence
+Opens Spotify in your browser, plays a song, and your Discord status updates automatically — showing the track name, artist, album art, and the current lyric. No Spotify account API keys or developer setup required.
+
+Everything runs locally on your machine. No data is sent anywhere except to Discord (to update your status) and Spotify (to open the web player).
 
 ## Requirements
 
-- [Discord](https://discord.com) desktop app (must be running)
-- [Tampermonkey](https://www.tampermonkey.net) browser extension (one-time setup)
+- [Discord](https://discord.com) desktop app
+- [Tampermonkey](https://www.tampermonkey.net) browser extension
 
 ## Setup
 
-### 1. Download and install the app
+### 1. Install the app
 
-Grab the latest installer from the [Releases](../../releases/latest) page:
+Download the latest version from the [Releases](../../releases/latest) page:
 
-- **Windows** — `Spotify Live Status Setup.exe`
-- **macOS** — `Spotify Live Status.dmg`
+- **Windows** — run `Spotify Live Status Setup.exe`
+- **macOS** — open `Spotify Live Status.dmg` and drag to Applications
 
-Run it and the app will appear in your system tray.
+The app runs in the background and shows up in your system tray.
 
-### 2. Install the userscript (one-time)
+### 2. Add the browser script (one-time)
 
-1. Install [Tampermonkey](https://www.tampermonkey.net) in Chrome, Edge, or Firefox if you haven't already
-2. Open [browser.js](browser.js), click **Raw**, then copy all the text
-3. In Tampermonkey, click **Create a new script**, paste it in, and hit **Save** (Ctrl+S)
+The app needs a small browser script to read your currently playing track from the Spotify web player.
 
-That's it — the userscript will automatically run every time you open Spotify in your browser.
+1. Install [Tampermonkey](https://www.tampermonkey.net) for [Chrome](https://www.tampermonkey.net), [Edge](https://www.tampermonkey.net), or [Firefox](https://www.tampermonkey.net) if you don't have it
+2. Open [browser.js](browser.js) in this repo, click **Raw**, and copy everything
+3. In Tampermonkey, click **Create a new script**, paste it in, and save with **Ctrl+S**
 
-### 3. Use it
+This script only runs on `open.spotify.com` and only sends your currently playing track info to the app on your own computer.
 
-1. Make sure Discord is open
-2. Launch **Spotify Live Status** from the Start menu / Applications folder (or it may already be running in the tray)
-3. Open [open.spotify.com](https://open.spotify.com) and play a track
-4. Open the **lyrics panel** and **expand the album art** for best results
+### 3. Play something
 
-Your Discord status updates automatically within a few seconds. The tray icon tooltip shows the current status.
+1. Open Discord
+2. Open [open.spotify.com](https://open.spotify.com) and play a track
+3. For lyrics to show, open the **lyrics panel** in the Spotify player
+
+Your Discord status will update within a few seconds. The tray icon shows the current state.
 
 ## Tips
 
-- Right-click the tray icon → **Quit** to exit
-- The current lyric line updates live as the song plays
-- If your status stops updating, refresh the Spotify browser tab
-- Only one instance can run at a time (port 8080)
+- Right-click the tray icon → **Quit** to stop the app
+- If your status stops updating, try refreshing the Spotify tab
+- The app needs to be running before you open Spotify for best results
 
 ## Build from source
 
@@ -57,14 +58,12 @@ Your Discord status updates automatically within a few seconds. The tray icon to
 git clone https://github.com/Areeb-Saqib/Spotify-Live-Status
 cd Spotify-Live-Status
 npm install
-npm run dev        # run in dev mode
-npm run dist       # build installer → release/
+npm run dev     # run without packaging
+npm run dist    # build installer
 ```
 
-Requires [Node.js](https://nodejs.org) v18+ and [Git](https://git-scm.com).
-
-Releases for Windows and macOS are built automatically via GitHub Actions on every version tag.
+Requires [Node.js](https://nodejs.org) v22+ and [Git](https://git-scm.com).
 
 ## Credits
 
-Original idea, inspiration, and core code by [lonelil](https://github.com/lonelil) — check out the original project at [lonelil/spotify-live-status](https://github.com/lonelil/spotify-live-status).
+Based on the original project by [lonelil](https://github.com/lonelil) — [lonelil/spotify-live-status](https://github.com/lonelil/spotify-live-status).
