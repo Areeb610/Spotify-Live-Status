@@ -8,7 +8,7 @@
     "build": "tsc",
     "start": "npm run build && electron .",
     "dev": "tsc && electron .",
-    "dist": "npm run build && cross-env CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder"
+    "dist": "npm run build && cross-env CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --publish never"
   },
   "dependencies": {
     "@xhayper/discord-rpc": "^1.0.15",
