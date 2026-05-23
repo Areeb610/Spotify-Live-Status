@@ -1,4 +1,4 @@
-# spotify-live-status
+# Spotify Live Status
 
 Show your Spotify status on Discord with **live lyrics support**.
 
@@ -6,53 +6,55 @@ Show your Spotify status on Discord with **live lyrics support**.
 
 ## How it works
 
-- A Tampermonkey userscript runs on `open.spotify.com` and scrapes the current track, album art, and lyrics from the page
-- A local Node.js server receives that data over WebSocket and pushes it to Discord via Rich Presence
+- A Tampermonkey userscript runs on `open.spotify.com` and reads the current track, album art, and lyrics from the page
+- The desktop app receives that data over a local WebSocket and pushes it to Discord via Rich Presence
 
 ## Requirements
 
-- [Discord](https://discord.com) (desktop app)
-- [Node.js](https://nodejs.org) v18 or later
-- [Tampermonkey](https://www.tampermonkey.net) browser extension
+- [Discord](https://discord.com) desktop app (must be running)
+- [Tampermonkey](https://www.tampermonkey.net) browser extension (one-time setup)
 
 ## Setup
 
-### 1. Install the userscript
+### 1. Download and install the app
 
-Open [browser.js](browser.js), copy the contents, then in Tampermonkey click **Create a new script**, paste it in, and save.
+Grab the latest **Spotify Live Status Setup.exe** from the [Releases](../../releases/latest) page and run it.  
+The app installs silently and appears in your system tray.
 
-### 2. Run the server
+### 2. Install the userscript (one-time)
 
-**Option A — Pre-built (recommended, no TypeScript needed)**
+1. Install [Tampermonkey](https://www.tampermonkey.net) in Chrome, Edge, or Firefox if you haven't already
+2. Open [browser.js](browser.js), click **Raw**, then copy all the text
+3. In Tampermonkey, click **Create a new script**, paste it in, and hit **Save** (Ctrl+S)
 
-Download the latest `index.js` from the [Releases](../../releases) page, then:
+That's it — the userscript will automatically run every time you open Spotify in your browser.
 
-```bash
-node index.js
-```
+### 3. Use it
 
-**Option B — Build from source**
-
-```bash
-git clone https://github.com/lonelil/spotify-live-status
-cd spotify-live-status
-npm install
-npx tsc
-node dist/index.js
-```
-
-### 3. Start listening
-
-1. Open Discord (must be running before the server starts)
-2. Open [open.spotify.com](https://open.spotify.com) and play a track
-3. Open the **lyrics panel** and **expand the album art** for best results
+1. Make sure Discord is open
+2. Launch **Spotify Live Status** from the Start menu (or it may already be running in the tray)
+3. Open [open.spotify.com](https://open.spotify.com) and play a track
+4. Open the **lyrics panel** and **expand the album art** for best results
 
 <img width="205" alt="Spotify with lyrics panel and expanded album art" src="https://user-images.githubusercontent.com/51315646/229554905-24b342ca-46b4-4b47-bb38-5c389395a262.png">
 
-Your Discord status will update automatically within a few seconds.
+Your Discord status updates automatically within a few seconds. The tray icon tooltip shows the current status.
 
 ## Tips
 
-- Keep the server running in the background while you use Spotify
-- The lyrics line shown in Discord updates in real time as the song plays
-- If your status stops updating, refresh the Spotify tab
+- Right-click the tray icon → **Quit** to exit
+- The current lyric line updates live as the song plays
+- If your status stops updating, refresh the Spotify browser tab
+- Only one instance can run at a time (port 8080)
+
+## Build from source
+
+```bash
+git clone https://github.com/areeb-saqib/spotify-live-status
+cd spotify-live-status
+npm install
+npm run dev        # run in dev mode
+npm run dist       # build installer → release/
+```
+
+Requires [Node.js](https://nodejs.org) v18+ and [Git](https://git-scm.com).
