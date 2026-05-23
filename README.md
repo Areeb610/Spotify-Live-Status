@@ -2,7 +2,7 @@
 
 Show your Spotify status on Discord with **live lyrics support**.
 
-<img width="368" alt="Discord RPC showing current Spotify track with lyrics" src="https://user-images.githubusercontent.com/51315646/229553964-144c10dd-0dcb4c28-92e3-c4d18a2b3b0d.png">
+![Discord RPC showing current Spotify track with lyrics](assets/spotify_live_status_example.png)
 
 ## How it works
 
@@ -36,7 +36,7 @@ That's it — the userscript will automatically run every time you open Spotify 
 3. Open [open.spotify.com](https://open.spotify.com) and play a track
 4. Open the **lyrics panel** and **expand the album art** for best results
 
-<img width="205" alt="Spotify with lyrics panel and expanded album art" src="https://user-images.githubusercontent.com/51315646/229554905-24b342ca-46b4-4b47-bb38-5c389395a262.png">
+![Spotify with lyrics panel and expanded album art](assets/spotify_live_status_example.png)
 
 Your Discord status updates automatically within a few seconds. The tray icon tooltip shows the current status.
 
