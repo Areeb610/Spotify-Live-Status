@@ -4,6 +4,8 @@ Show your Spotify status on Discord with **live lyrics support**.
 
 ![Discord RPC showing current Spotify track with lyrics](assets/spotify_live_status_example.png)
 
+> **Note:** This app may not work reliably with fast songs or tracks without lyrics, as it depends on Spotify's web player DOM and lyrics panel being visible.
+
 ## How it works
 
 - A Tampermonkey userscript runs on `open.spotify.com` and reads the current track, album art, and lyrics from the page
@@ -18,8 +20,12 @@ Show your Spotify status on Discord with **live lyrics support**.
 
 ### 1. Download and install the app
 
-Grab the latest **Spotify Live Status Setup.exe** from the [Releases](../../releases/latest) page and run it.  
-The app installs silently and appears in your system tray.
+Grab the latest installer from the [Releases](../../releases/latest) page:
+
+- **Windows** — `Spotify Live Status Setup.exe`
+- **macOS** — `Spotify Live Status.dmg`
+
+Run it and the app will appear in your system tray.
 
 ### 2. Install the userscript (one-time)
 
@@ -32,11 +38,9 @@ That's it — the userscript will automatically run every time you open Spotify 
 ### 3. Use it
 
 1. Make sure Discord is open
-2. Launch **Spotify Live Status** from the Start menu (or it may already be running in the tray)
+2. Launch **Spotify Live Status** from the Start menu / Applications folder (or it may already be running in the tray)
 3. Open [open.spotify.com](https://open.spotify.com) and play a track
 4. Open the **lyrics panel** and **expand the album art** for best results
-
-![Spotify with lyrics panel and expanded album art](assets/spotify_live_status_example.png)
 
 Your Discord status updates automatically within a few seconds. The tray icon tooltip shows the current status.
 
@@ -50,11 +54,17 @@ Your Discord status updates automatically within a few seconds. The tray icon to
 ## Build from source
 
 ```bash
-git clone https://github.com/areeb-saqib/spotify-live-status
-cd spotify-live-status
+git clone https://github.com/Areeb-Saqib/Spotify-Live-Status
+cd Spotify-Live-Status
 npm install
 npm run dev        # run in dev mode
 npm run dist       # build installer → release/
 ```
 
 Requires [Node.js](https://nodejs.org) v18+ and [Git](https://git-scm.com).
+
+Releases for Windows and macOS are built automatically via GitHub Actions on every version tag.
+
+## Credits
+
+Original idea, inspiration, and core code by [lonelil](https://github.com/lonelil) — check out the original project at [lonelil/spotify-live-status](https://github.com/lonelil/spotify-live-status).
