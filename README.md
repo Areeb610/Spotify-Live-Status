@@ -24,7 +24,9 @@ Everything runs locally on your machine. No data is sent anywhere except to Disc
 Download the latest version from the [Releases](../../releases/latest) page:
 
 - **Windows** — run `Spotify Live Status Setup.exe`
+  > Windows may show a "Windows protected your PC" warning. Click **More info** → **Run anyway**. This happens because the app isn't commercially signed — the source code is fully open and auditable above.
 - **macOS** — open `Spotify Live Status.dmg` and drag to Applications
+  > macOS may block it on first launch. Go to **System Settings → Privacy & Security** and click **Open Anyway**.
 
 The app runs in the background and shows up in your system tray.
 
